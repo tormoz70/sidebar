@@ -8,6 +8,7 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import SidebarItem from './SidebarItem'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
+import { APP_PAGES, notFoundPage } from '../../routes/appRoutes'
 
 type Props = {
     item: RouteType
@@ -24,7 +25,8 @@ const SidebarItemCollapse = ({ item }: Props) => {
         }
     }, [appState, item]);
     
-
+    const apage = APP_PAGES.get(item.state) || notFoundPage
+    
     return (
         item.sidebarProps ? (
             <>
@@ -41,7 +43,7 @@ const SidebarItemCollapse = ({ item }: Props) => {
                     <ListItemIcon sx={{
                         color: colorConfigs.sidebar.color
                     }}>
-                        {item.sidebarProps.icon && item.sidebarProps.icon}
+                        {apage.icon && apage.icon}
                     </ListItemIcon>
                     <ListItemText
                         disableTypography

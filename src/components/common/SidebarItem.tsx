@@ -1,9 +1,10 @@
 import { ListItemButton, ListItemIcon } from "@mui/material"
-import { RouteType } from "../../routes/config"
+import { PageType, RouteType } from "../../routes/config"
 import colorConfigs from "../../configs/colorConfigs"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
+import { APP_PAGES, notFoundPage } from "../../routes/appRoutes"
 
 type Props = {
     item: RouteType
@@ -11,7 +12,7 @@ type Props = {
 
 const SidebarItem = ({ item }: Props) => {
     const { appState } = useSelector((state: RootState) => state.appState)
-
+    const apage = APP_PAGES.get(item.state) || notFoundPage
     return (
         item.sidebarProps && item.path ? (
             <ListItemButton
@@ -29,7 +30,7 @@ const SidebarItem = ({ item }: Props) => {
                 <ListItemIcon sx={{
                     color: colorConfigs.sidebar.color
                 }}>
-                    {item.sidebarProps.icon && item.sidebarProps.icon}
+                    {apage.icon && apage.icon}
                 </ListItemIcon>
                 {item.sidebarProps.displayText}
             </ListItemButton>

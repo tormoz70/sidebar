@@ -2,7 +2,7 @@ import { Avatar, Drawer, List, ListItemButton, ListItemIcon, Stack, Toolbar } fr
 import sizeConfigs from "../../configs/sizeConfigs";
 import assets from "../../assets";
 import colorConfigs from "../../configs/colorConfigs";
-import appRoutes from "../../routes/appRoutes";
+import APP_ROUTES from "../../routes/appRoutes";
 import SidebarItem from "./SidebarItem";
 import SidebarItemCollapse from "./SidebarItemCollapse";
 
@@ -32,7 +32,7 @@ const Sidebar = () => {
                         <Avatar src={assets.images.logo}/>
                     </Stack>
                 </Toolbar>
-                {appRoutes.map((route, index) => (
+                {APP_ROUTES.map((route, index) => (
                     route.sidebarProps ? (
                         route.child ? (
                             <SidebarItemCollapse item={route} key={index}/>
